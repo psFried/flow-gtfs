@@ -1,0 +1,18 @@
+{
+  "files": [
+    "../flow_generated/flow/main.ts",
+    "../flow_generated/flow/routes.ts",
+    "../flow_generated/flow/server.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/agency.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/calendar.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/calendar_dates.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/fare_attributes.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/fare_rules.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/routes.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/shapes.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/stop_times.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/stops.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/transfers.txt.d.ts",
+    "../flow_generated/types/aliceCo/gtfs4/static/trips.txt.d.ts"
+  ]
+}

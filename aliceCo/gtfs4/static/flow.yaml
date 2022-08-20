@@ -1,0 +1,187 @@
+---
+collections:
+  aliceCo/gtfs4/static/agency.txt:
+    schema: agency.txt.schema.yaml
+    key:
+      - /_meta/file
+      - /_meta/offset
+  aliceCo/gtfs4/static/calendar.txt:
+    schema: calendar.txt.schema.yaml
+    key:
+      - /service_id
+  aliceCo/gtfs4/static/calendar_dates.txt:
+    schema:
+      $schema: "http://json-schema.org/draft-07/schema#"
+      properties:
+        _meta:
+          properties:
+            file:
+              type: string
+            offset:
+              type: integer
+          required:
+            - file
+            - offset
+          type: object
+        date:
+          type: string
+        exception_type:
+          type: string
+        service_id:
+          type: string
+      required:
+        - _meta
+        - date
+        - exception_type
+        - service_id
+      type: object
+    key:
+      - /service_id
+      - /date
+  aliceCo/gtfs4/static/fare_attributes.txt:
+    schema: fare_attributes.txt.schema.yaml
+    key:
+      - /fare_id
+  aliceCo/gtfs4/static/fare_rules.txt:
+    schema:
+      $schema: "http://json-schema.org/draft-07/schema#"
+      properties:
+        _meta:
+          properties:
+            file:
+              type: string
+            offset:
+              type: integer
+          required:
+            - file
+            - offset
+          type: object
+        contains_id:
+          type:
+            - string
+            - "null"
+        destination_id:
+          type:
+            - string
+            - "null"
+        fare_id:
+          type: string
+        origin_id:
+          type:
+            - string
+            - "null"
+        route_id:
+          type:
+            - string
+            - "null"
+      required:
+        - _meta
+        - fare_id
+      type: object
+    key:
+      - /_meta/file
+      - /_meta/offset
+  aliceCo/gtfs4/static/routes.txt:
+    schema: routes.txt.schema.yaml
+    key:
+      - /route_id
+  aliceCo/gtfs4/static/shapes.txt:
+    schema: shapes.txt.schema.yaml
+    key:
+      - /shape_id
+      - /shape_pt_sequence
+  aliceCo/gtfs4/static/stop_times.txt:
+    schema: stop_times.txt.schema.yaml
+    key:
+      - /trip_id
+      - /stop_sequence
+  aliceCo/gtfs4/static/stops.txt:
+    schema: stops.txt.schema.yaml
+    key:
+      - /stop_id
+  aliceCo/gtfs4/static/transfers.txt:
+    schema:
+      $schema: "http://json-schema.org/draft-07/schema#"
+      properties:
+        _meta:
+          properties:
+            file:
+              type: string
+            offset:
+              type: integer
+          required:
+            - file
+            - offset
+          type: object
+        from_stop_id:
+          type: string
+        min_transfer_time:
+          type: "null"
+        to_stop_id:
+          type: string
+        transfer_type:
+          type: "null"
+      required:
+        - _meta
+        - from_stop_id
+        - to_stop_id
+        - transfer_type
+      type: object
+    key:
+      - /_meta/file
+      - /_meta/offset
+  aliceCo/gtfs4/static/trips.txt:
+    schema: trips.txt.schema.yaml
+    key:
+      - /trip_id
+captures:
+  aliceCo/gtfs4/static/source-gtfs:
+    endpoint:
+      connector:
+        image: "ghcr.io/estuary/source-gtfs:local"
+        config: source-gtfs.config.yaml
+    bindings:
+      - resource:
+          stream: agency.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/agency.txt
+      - resource:
+          stream: calendar.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/calendar.txt
+      - resource:
+          stream: calendar_dates.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/calendar_dates.txt
+      - resource:
+          stream: fare_attributes.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/fare_attributes.txt
+      - resource:
+          stream: fare_rules.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/fare_rules.txt
+      - resource:
+          stream: routes.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/routes.txt
+      - resource:
+          stream: shapes.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/shapes.txt
+      - resource:
+          stream: stop_times.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/stop_times.txt
+      - resource:
+          stream: stops.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/stops.txt
+      - resource:
+          stream: transfers.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/transfers.txt
+      - resource:
+          stream: trips.txt
+          syncMode: incremental
+        target: aliceCo/gtfs4/static/trips.txt

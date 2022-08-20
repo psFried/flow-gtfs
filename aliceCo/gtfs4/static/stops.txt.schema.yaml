@@ -1,0 +1,63 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  location_type:
+    type:
+      - string
+      - "null"
+  parent_station:
+    type:
+      - string
+      - "null"
+  stop_code:
+    type:
+      - string
+      - "null"
+  stop_desc:
+    type:
+      - "null"
+      - string
+  stop_id:
+    type: string
+  stop_lat:
+    type:
+      - string
+      - "null"
+  stop_lon:
+    type:
+      - string
+      - "null"
+  stop_name:
+    type:
+      - string
+      - "null"
+  stop_timezone:
+    type:
+      - string
+      - "null"
+  stop_url:
+    type:
+      - string
+      - "null"
+  wheelchair_boarding:
+    type:
+      - string
+      - "null"
+  zone_id:
+    type:
+      - string
+      - "null"
+required:
+  - _meta
+  - stop_id
+type: object

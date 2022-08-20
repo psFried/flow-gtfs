@@ -1,0 +1,42 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  agency_id:
+    type:
+      - string
+      - "null"
+  currency_type:
+    type: string
+  fare_id:
+    type: string
+  payment_method:
+    type: string
+  price:
+    type: string
+  transfer_duration:
+    type:
+      - string
+      - "null"
+  transfers:
+    description: "this field is always required, but a null value indicates that unlimited transfers are allowed"
+    type:
+      - string
+      - "null"
+required:
+  - _meta
+  - currency_type
+  - fare_id
+  - payment_method
+  - price
+  - transfers
+type: object

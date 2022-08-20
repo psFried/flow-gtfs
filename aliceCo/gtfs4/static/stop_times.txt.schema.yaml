@@ -1,0 +1,53 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  arrival_time:
+    type:
+      - string
+      - "null"
+  departure_time:
+    type:
+      - string
+      - "null"
+  drop_off_type:
+    type:
+      - string
+      - "null"
+  pickup_type:
+    type:
+      - string
+      - "null"
+  shape_dist_traveled:
+    type:
+      - "null"
+      - string
+  stop_headsign:
+    type:
+      - string
+      - "null"
+  stop_id:
+    type: string
+  stop_sequence:
+    type: string
+  timepoint:
+    type:
+      - string
+      - "null"
+  trip_id:
+    type: string
+required:
+  - _meta
+  - stop_id
+  - stop_sequence
+  - trip_id
+type: object

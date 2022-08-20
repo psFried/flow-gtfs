@@ -1,0 +1,50 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  agency_id:
+    type:
+      - string
+      - "null"
+  route_color:
+    type:
+      - string
+      - "null"
+  route_desc:
+    type:
+      - string
+      - "null"
+  route_id:
+    type: string
+  route_long_name:
+    type:
+      - string
+      - "null"
+  route_short_name:
+    type:
+      - string
+      - "null"
+  route_text_color:
+    type:
+      - string
+      - "null"
+  route_type:
+    type: string
+  route_url:
+    type:
+      - "null"
+      - string
+required:
+  - _meta
+  - route_id
+  - route_type
+type: object

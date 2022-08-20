@@ -1,0 +1,16 @@
+---
+url: "https://www.cota.com/data/cota.gtfs.zip"
+sops:
+  kms: ~
+  gcp_kms:
+    - resource_id: projects/helpful-kingdom-273219/locations/us-central1/keyRings/catalog-sops/cryptoKeys/config-encryptor
+      created_at: "2022-08-19T21:23:10Z"
+      enc: CiQABM8p+1Mt0Z0yAC0yTOsvjPNHLDGcWUEhh5LH9G6cIrhmo8oSSADqeAqHFAykP3ItvS1zp+kVTBF1LUqg6m3tsCgJjId3LcQghlunpg2kwLo41ujmPYLCPIf1tQqunz8ofEa3tjZLMcMxGf2y9g==
+  azure_kv: ~
+  hc_vault: ~
+  age: ~
+  lastmodified: "2022-08-19T21:23:10Z"
+  mac: "ENC[AES256_GCM,data:y9Kb13ldKMOXLjHNJff7+iGnet1zmd/TYWbDqGRHylm6p346XPWymx/L+G5qjbOv9rUNk2Hk+mRcgiDiFN2NEuC5rHHnf+ECj4bjW4x9QDVvrW0Xd9qdQasXtaGmhjOuV2Wt1A9p1UJO6W71aXlaJCmP2SZg74f9Qvpq297+Hv0=,iv:4jMJhtcxsmJOfezr0+aVL+zOZXJ8GMaa9mrVJSWxvwo=,tag:XyBL33+tioc4ynlQ3Auvsg==,type:str]"
+  pgp: ~
+  encrypted_suffix: _sops
+  version: 3.7.3

@@ -1,0 +1,32 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  shape_dist_traveled:
+    type:
+      - string
+      - "null"
+  shape_id:
+    type: string
+  shape_pt_lat:
+    type: string
+  shape_pt_lon:
+    type: string
+  shape_pt_sequence:
+    type: string
+required:
+  - _meta
+  - shape_id
+  - shape_pt_lat
+  - shape_pt_lon
+  - shape_pt_sequence
+type: object
