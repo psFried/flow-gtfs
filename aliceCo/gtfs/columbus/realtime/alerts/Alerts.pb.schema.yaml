@@ -1,0 +1,105 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  entity:
+    items:
+      properties:
+        alert:
+          properties:
+            activePeriod:
+              items:
+                properties:
+                  end:
+                    type: string
+                  start:
+                    type: string
+                required:
+                  - end
+                  - start
+                type: object
+              type: array
+            descriptionText:
+              properties:
+                translation:
+                  items:
+                    properties:
+                      language:
+                        type: string
+                      text:
+                        type: string
+                    required:
+                      - language
+                      - text
+                    type: object
+                  type: array
+              required:
+                - translation
+              type: object
+            effect:
+              type: string
+            headerText:
+              properties:
+                translation:
+                  items:
+                    properties:
+                      language:
+                        type: string
+                      text:
+                        type: string
+                    required:
+                      - language
+                      - text
+                    type: object
+                  type: array
+              required:
+                - translation
+              type: object
+            informedEntity:
+              items:
+                properties:
+                  agencyId:
+                    type: string
+                  routeId:
+                    type: string
+                  stopId:
+                    type: string
+                type: object
+              type: array
+          required:
+            - activePeriod
+            - descriptionText
+            - headerText
+            - informedEntity
+          type: object
+        id:
+          type: string
+      required:
+        - alert
+        - id
+      type: object
+    type: array
+  header:
+    properties:
+      gtfsRealtimeVersion:
+        type: string
+      timestamp:
+        type: string
+    required:
+      - gtfsRealtimeVersion
+      - timestamp
+    type: object
+required:
+  - _meta
+  - entity
+  - header
+type: object

@@ -1,3 +1,6 @@
 ---
 import:
+  - aliceCo/gtfs/columbus/realtime/alerts/flow.yaml
+  - aliceCo/gtfs/columbus/realtime/trip-updates/flow.yaml
+  - aliceCo/gtfs/columbus/realtime/vehicle-positions/flow.yaml
   - aliceCo/gtfs4/static/flow.yaml

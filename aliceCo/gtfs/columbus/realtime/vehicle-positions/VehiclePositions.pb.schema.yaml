@@ -1,0 +1,85 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  entity:
+    items:
+      properties:
+        id:
+          type: string
+        vehicle:
+          properties:
+            position:
+              properties:
+                bearing:
+                  type: number
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+                speed:
+                  type: number
+              required:
+                - latitude
+                - longitude
+              type: object
+            timestamp:
+              type: string
+            trip:
+              properties:
+                routeId:
+                  type: string
+                startDate:
+                  type: string
+                tripId:
+                  type: string
+              required:
+                - routeId
+                - startDate
+                - tripId
+              type: object
+            vehicle:
+              properties:
+                id:
+                  type: string
+                label:
+                  type: string
+              required:
+                - id
+                - label
+              type: object
+          required:
+            - position
+            - timestamp
+            - trip
+            - vehicle
+          type: object
+      required:
+        - id
+        - vehicle
+      type: object
+    type: array
+  header:
+    properties:
+      gtfsRealtimeVersion:
+        type: string
+      timestamp:
+        type: string
+    required:
+      - gtfsRealtimeVersion
+      - timestamp
+    type: object
+required:
+  - _meta
+  - entity
+  - header
+type: object

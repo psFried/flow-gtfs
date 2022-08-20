@@ -1,0 +1,101 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+properties:
+  _meta:
+    properties:
+      file:
+        type: string
+      offset:
+        type: integer
+    required:
+      - file
+      - offset
+    type: object
+  entity:
+    items:
+      properties:
+        id:
+          type: string
+        tripUpdate:
+          properties:
+            stopTimeUpdate:
+              items:
+                properties:
+                  arrival:
+                    properties:
+                      time:
+                        type: string
+                    required:
+                      - time
+                    type: object
+                  departure:
+                    properties:
+                      time:
+                        type: string
+                    required:
+                      - time
+                    type: object
+                  scheduleRelationship:
+                    type: string
+                  stopId:
+                    type: string
+                  stopSequence:
+                    type: integer
+                required:
+                  - arrival
+                  - departure
+                  - stopId
+                  - stopSequence
+                type: object
+              type: array
+            timestamp:
+              type: string
+            trip:
+              properties:
+                routeId:
+                  type: string
+                startDate:
+                  type: string
+                tripId:
+                  type: string
+              required:
+                - routeId
+                - startDate
+                - tripId
+              type: object
+            vehicle:
+              properties:
+                id:
+                  type: string
+                label:
+                  type: string
+              required:
+                - id
+                - label
+              type: object
+          required:
+            - stopTimeUpdate
+            - timestamp
+            - trip
+            - vehicle
+          type: object
+      required:
+        - id
+        - tripUpdate
+      type: object
+    type: array
+  header:
+    properties:
+      gtfsRealtimeVersion:
+        type: string
+      timestamp:
+        type: string
+    required:
+      - gtfsRealtimeVersion
+      - timestamp
+    type: object
+required:
+  - _meta
+  - entity
+  - header
+type: object

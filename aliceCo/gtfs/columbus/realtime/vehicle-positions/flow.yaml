@@ -1,0 +1,18 @@
+---
+collections:
+  aliceCo/gtfs/columbus/realtime/vehicle-positions/VehiclePositions.pb:
+    schema: VehiclePositions.pb.schema.yaml
+    key:
+      - /_meta/file
+      - /_meta/offset
+captures:
+  aliceCo/gtfs/columbus/realtime/vehicle-positions/source-http-file:
+    endpoint:
+      connector:
+        image: "ghcr.io/estuary/source-http-file:local"
+        config: source-http-file.config.yaml
+    bindings:
+      - resource:
+          stream: VehiclePositions.pb
+          syncMode: incremental
+        target: aliceCo/gtfs/columbus/realtime/vehicle-positions/VehiclePositions.pb
