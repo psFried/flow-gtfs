@@ -1,0 +1,18 @@
+---
+collections:
+  phil/gtfs/columbus/realtime/trip-updates/TripUpdates.pb:
+    schema: TripUpdates.pb.schema.yaml
+    key:
+      - /header/timestamp
+captures:
+  phil/gtfs/columbus/realtime/trip-updates/source-http-file:
+    interval: "30s"
+    endpoint:
+      connector:
+        image: "ghcr.io/estuary/source-http-file:phil-gtfs"
+        config: source-http-file.config.yaml
+    bindings:
+      - resource:
+          stream: TripUpdates.pb
+          syncMode: incremental
+        target: phil/gtfs/columbus/realtime/trip-updates/TripUpdates.pb

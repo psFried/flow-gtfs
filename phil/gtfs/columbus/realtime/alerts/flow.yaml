@@ -1,0 +1,19 @@
+---
+collections:
+  phil/gtfs/columbus/realtime/alerts/Alerts.pb:
+    schema: Alerts.pb.schema.yaml
+    key:
+      - /header/timestamp
+
+captures:
+  phil/gtfs/columbus/realtime/alerts/source-http-file:
+    interval: "30s"
+    endpoint:
+      connector:
+        image: "ghcr.io/estuary/source-http-file:phil-gtfs"
+        config: source-http-file.config.yaml
+    bindings:
+      - resource:
+          stream: Alerts.pb
+          syncMode: incremental
+        target: phil/gtfs/columbus/realtime/alerts/Alerts.pb

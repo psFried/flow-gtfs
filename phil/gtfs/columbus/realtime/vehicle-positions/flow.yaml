@@ -1,0 +1,20 @@
+---
+collections:
+  phil/gtfs/columbus/realtime/vehicle-positions/VehiclePositions.pb:
+    schema: VehiclePositions.pb.schema.yaml
+    key:
+      - /header/timestamp
+captures:
+  phil/gtfs/columbus/realtime/vehicle-positions/source-http-file:
+    # Poll for the latest vehicle positions every 30 seconds
+    interval: "30s"
+    endpoint:
+      connector:
+        image: "ghcr.io/estuary/source-http-file:phil-gtfs"
+        config: source-http-file.config.yaml
+    bindings:
+      - resource:
+          stream: VehiclePositions.pb
+          syncMode: incremental
+        target: phil/gtfs/columbus/realtime/vehicle-positions/VehiclePositions.pb
+

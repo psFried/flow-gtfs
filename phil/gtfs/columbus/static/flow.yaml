@@ -1,15 +1,15 @@
 ---
 collections:
-  aliceCo/gtfs4/static/agency.txt:
+  phil/gtfs/columbus/static/agency.txt:
     schema: agency.txt.schema.yaml
     key:
       - /_meta/file
       - /_meta/offset
-  aliceCo/gtfs4/static/calendar.txt:
+  phil/gtfs/columbus/static/calendar.txt:
     schema: calendar.txt.schema.yaml
     key:
       - /service_id
-  aliceCo/gtfs4/static/calendar_dates.txt:
+  phil/gtfs/columbus/static/calendar_dates.txt:
     schema:
       $schema: "http://json-schema.org/draft-07/schema#"
       properties:
@@ -38,11 +38,11 @@ collections:
     key:
       - /service_id
       - /date
-  aliceCo/gtfs4/static/fare_attributes.txt:
+  phil/gtfs/columbus/static/fare_attributes.txt:
     schema: fare_attributes.txt.schema.yaml
     key:
       - /fare_id
-  aliceCo/gtfs4/static/fare_rules.txt:
+  phil/gtfs/columbus/static/fare_rules.txt:
     schema:
       $schema: "http://json-schema.org/draft-07/schema#"
       properties:
@@ -81,25 +81,25 @@ collections:
     key:
       - /_meta/file
       - /_meta/offset
-  aliceCo/gtfs4/static/routes.txt:
+  phil/gtfs/columbus/static/routes.txt:
     schema: routes.txt.schema.yaml
     key:
       - /route_id
-  aliceCo/gtfs4/static/shapes.txt:
+  phil/gtfs/columbus/static/shapes.txt:
     schema: shapes.txt.schema.yaml
     key:
       - /shape_id
       - /shape_pt_sequence
-  aliceCo/gtfs4/static/stop_times.txt:
+  phil/gtfs/columbus/static/stop_times.txt:
     schema: stop_times.txt.schema.yaml
     key:
       - /trip_id
       - /stop_sequence
-  aliceCo/gtfs4/static/stops.txt:
+  phil/gtfs/columbus/static/stops.txt:
     schema: stops.txt.schema.yaml
     key:
       - /stop_id
-  aliceCo/gtfs4/static/transfers.txt:
+  phil/gtfs/columbus/static/transfers.txt:
     schema:
       $schema: "http://json-schema.org/draft-07/schema#"
       properties:
@@ -130,58 +130,61 @@ collections:
     key:
       - /_meta/file
       - /_meta/offset
-  aliceCo/gtfs4/static/trips.txt:
+  phil/gtfs/columbus/static/trips.txt:
     schema: trips.txt.schema.yaml
     key:
       - /trip_id
 captures:
-  aliceCo/gtfs4/static/source-gtfs:
+  phil/gtfs/columbus/static/source-gtfs:
+    # The so-called static data does actually get updated priodically, but not very often, so we'll
+    # only fetch it once per day.
+    interval: "1d"
     endpoint:
       connector:
-        image: "ghcr.io/estuary/source-gtfs:local"
+        image: "ghcr.io/estuary/source-gtfs:phil-gtfs"
         config: source-gtfs.config.yaml
     bindings:
       - resource:
           stream: agency.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/agency.txt
+        target: phil/gtfs/columbus/static/agency.txt
       - resource:
           stream: calendar.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/calendar.txt
+        target: phil/gtfs/columbus/static/calendar.txt
       - resource:
           stream: calendar_dates.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/calendar_dates.txt
+        target: phil/gtfs/columbus/static/calendar_dates.txt
       - resource:
           stream: fare_attributes.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/fare_attributes.txt
+        target: phil/gtfs/columbus/static/fare_attributes.txt
       - resource:
           stream: fare_rules.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/fare_rules.txt
+        target: phil/gtfs/columbus/static/fare_rules.txt
       - resource:
           stream: routes.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/routes.txt
+        target: phil/gtfs/columbus/static/routes.txt
       - resource:
           stream: shapes.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/shapes.txt
+        target: phil/gtfs/columbus/static/shapes.txt
       - resource:
           stream: stop_times.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/stop_times.txt
+        target: phil/gtfs/columbus/static/stop_times.txt
       - resource:
           stream: stops.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/stops.txt
+        target: phil/gtfs/columbus/static/stops.txt
       - resource:
           stream: transfers.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/transfers.txt
+        target: phil/gtfs/columbus/static/transfers.txt
       - resource:
           stream: trips.txt
           syncMode: incremental
-        target: aliceCo/gtfs4/static/trips.txt
+        target: phil/gtfs/columbus/static/trips.txt
