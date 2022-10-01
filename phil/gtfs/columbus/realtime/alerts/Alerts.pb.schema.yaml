@@ -1,5 +1,74 @@
 ---
 $schema: "http://json-schema.org/draft-07/schema#"
+$defs:
+  alert:
+    properties:
+      activePeriod:
+        items:
+          properties:
+            end:
+              type: string
+            start:
+              type: string
+          required:
+            - end
+            - start
+          type: object
+        type: array
+      descriptionText:
+        properties:
+          translation:
+            items:
+              properties:
+                language:
+                  type: string
+                text:
+                  type: string
+              required:
+                - language
+                - text
+              type: object
+            type: array
+        required:
+          - translation
+        type: object
+      effect:
+        type: string
+      headerText:
+        properties:
+          translation:
+            items:
+              properties:
+                language:
+                  type: string
+                text:
+                  type: string
+              required:
+                - language
+                - text
+              type: object
+            type: array
+        required:
+          - translation
+        type: object
+      informedEntity:
+        items:
+          properties:
+            agencyId:
+              type: string
+            routeId:
+              type: string
+            stopId:
+              type: string
+          type: object
+        type: array
+    required:
+      - activePeriod
+      - descriptionText
+      - headerText
+      - informedEntity
+    type: object
+
 properties:
   _meta:
     properties:
@@ -14,73 +83,7 @@ properties:
   entity:
     items:
       properties:
-        alert:
-          properties:
-            activePeriod:
-              items:
-                properties:
-                  end:
-                    type: string
-                  start:
-                    type: string
-                required:
-                  - end
-                  - start
-                type: object
-              type: array
-            descriptionText:
-              properties:
-                translation:
-                  items:
-                    properties:
-                      language:
-                        type: string
-                      text:
-                        type: string
-                    required:
-                      - language
-                      - text
-                    type: object
-                  type: array
-              required:
-                - translation
-              type: object
-            effect:
-              type: string
-            headerText:
-              properties:
-                translation:
-                  items:
-                    properties:
-                      language:
-                        type: string
-                      text:
-                        type: string
-                    required:
-                      - language
-                      - text
-                    type: object
-                  type: array
-              required:
-                - translation
-              type: object
-            informedEntity:
-              items:
-                properties:
-                  agencyId:
-                    type: string
-                  routeId:
-                    type: string
-                  stopId:
-                    type: string
-                type: object
-              type: array
-          required:
-            - activePeriod
-            - descriptionText
-            - headerText
-            - informedEntity
-          type: object
+        alert: {$ref: '#/$defs/alert'}
         id:
           type: string
       required:

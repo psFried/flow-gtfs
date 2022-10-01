@@ -1,0 +1,15 @@
+type: object
+properties:
+  translation:
+    type: array
+    items:
+      type: object
+      properties:
+        language:
+          type: string
+        text:
+          type: string
+      required:
+        - language
+        - text
+

@@ -1,0 +1,50 @@
+$defs:
+  alertStatusEvent:
+    type: object
+    properties:
+      entityId: {type: string}
+      entityType: {enum: [ROUTE, STOP]}
+      eventTime: {type: string, format: date-time}
+      alertActive: {type: boolean}
+      agencyId: {type: string}
+      cause: {type: string}
+      effect: {type: string}
+      url: {type: string}
+      headerText: {$ref: translated-text-schema.yaml }
+      descriptionText: {$ref: translated-text-schema.yaml }
+    required: [entityId, entityType, eventType, alertActive, lastUpdate]
+
+  alertState:
+    type: object
+    properties:
+
+
+
+
+  stop-alert:
+    type: object
+    properties:
+      observedAt: {type: string, format: date-time}
+      routeId: {type: string}
+      cause: {type: string}
+      effect: {type: string}
+      url: {type: string}
+      header_text: {$ref: translated-text-schema.yaml }
+      start_time: {type: string, format: date-time}
+      end_time: {type: string, format: date-time}
+  route-alert:
+    type: object
+    properties:
+      observedAt: {type: string, format: date-time}
+      routeId: {type: string}
+      cause: {type: string}
+      effect: {type: string}
+      url: {type: string}
+      headerText: {$ref: translated-text-schema.yaml }
+      descriptionText: {$ref: translated-text-schema.yaml }
+      start_time: {type: string, format: date-time}
+      end_time: {type: string, format: date-time}
+    requried:
+      - routeId
+      - observedAt
+

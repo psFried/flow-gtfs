@@ -1,0 +1,22 @@
+collections:
+  phil/gtfs/columbus/realtime/alert-status-events:
+    schema: 'unrolled-alerts-schema.yaml#/$defs/alertStatusEvent'
+    key: [/entityType, /entityId, /eventTime]
+    derivation:
+      register:
+        schema: 'unrolled-alerts-schema.yaml#/$defs/alertState'
+        initial:
+          # Value to use if this is the first time seeing this bike.
+          station: { id: 0, name: "" }
+          timestamp: "0000-00-00 00:00:00.0"
+
+      transform:
+        fromRides:
+          source: { name: examples/citi-bike/rides }
+          shuffle: { key: [/bike_id] }
+          update:
+            lambda: typescript
+          publish:
+            lambda: typescript
+      typescript:
+        module: rides-and-relocations.flow.ts
